@@ -1,7 +1,7 @@
-package jp.speakbuddy.edisonpractice.ui.fact
+package jp.speakbuddy.edisonandroidexercise.ui.fact
 
 import androidx.lifecycle.ViewModel
-import jp.speakbuddy.edisonpractice.network.FactServiceProvider
+import jp.speakbuddy.edisonandroidexercise.network.FactServiceProvider
 import kotlinx.coroutines.runBlocking
 
 class FactViewModel : ViewModel() {

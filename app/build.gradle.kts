@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "jp.speakbuddy.edisonpractice"
+    namespace = "jp.speakbuddy.edisonandroidexercise"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "jp.speakbuddy.edisonpractice"
+        applicationId = "jp.speakbuddy.edisonandroidexercise"
         minSdk = 26
         targetSdk = 33
         versionCode = 1

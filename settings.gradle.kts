@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "EdisonPractice"
+rootProject.name = "edison_android_exercise"
 
 include(":app")

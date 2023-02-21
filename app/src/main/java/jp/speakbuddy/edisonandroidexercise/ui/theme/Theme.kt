@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonpractice.ui.theme
+package jp.speakbuddy.edisonandroidexercise.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun EdisonPracticeTheme(
+fun EdisonAndroidExerciseTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonpractice
+package jp.speakbuddy.edisonandroidexercise
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,19 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import jp.speakbuddy.edisonpractice.ui.fact.FactScreen
-import jp.speakbuddy.edisonpractice.ui.fact.FactViewModel
-import jp.speakbuddy.edisonpractice.ui.theme.EdisonPracticeTheme
+import jp.speakbuddy.edisonandroidexercise.ui.fact.FactScreen
+import jp.speakbuddy.edisonandroidexercise.ui.fact.FactViewModel
+import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            EdisonPracticeTheme {
+            EdisonAndroidExerciseTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
