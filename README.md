@@ -15,7 +15,7 @@ Please implement TODOs! (If you have time, please also try to do Optional.)
 - Show the `length` from the api response below the `fact` content *only when*
   the `length` is greater than 100
 - Show the text "Multiple cats!" when the `fact` contains the word `cats`
-  - No context check is rquired, simply finding the workd `cats` is fine
+  - No context check is required, simply finding the worked `cats` is fine
 - Make the UI state immutable as much as possible
 - Add unit tests
 
@@ -23,6 +23,9 @@ Please implement TODOs! (If you have time, please also try to do Optional.)
 It would be great if you give us some feedback about the requirements!
 
 Some of them can be improved, or unnecessary.
+
+#### Example screenshot after implementing TODOs
+![Screenshot](./fact_app_finish.jpg)
 
 ### Optional
 If we have time, we want to
