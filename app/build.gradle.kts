@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin.Companion.isUseK2
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.hilt)
