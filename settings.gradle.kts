@@ -17,4 +17,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "edison_android_exercise"
 
 include(":app")
+include(":core:data")
 include(":core:network")
+include(":core:domain")
