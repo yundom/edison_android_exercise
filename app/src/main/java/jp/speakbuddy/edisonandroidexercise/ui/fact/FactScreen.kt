@@ -56,11 +56,3 @@ fun FactScreen(
         }
     }
 }
-
-@Preview
-@Composable
-private fun FactScreenPreview() {
-    EdisonAndroidExerciseTheme {
-        FactScreen(viewModel = FactViewModel())
-    }
-}
