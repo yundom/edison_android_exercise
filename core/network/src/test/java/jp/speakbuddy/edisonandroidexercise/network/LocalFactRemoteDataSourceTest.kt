@@ -57,7 +57,7 @@ class LocalFactRemoteDataSourceTest {
 
     @Test
     fun `Test deserialization of Fact`() = runTest {
-        var result = dataSource.getFact()
+        val result = dataSource.getFact()
 
         assertEquals("Cats see six times better in the dark and at night than humans.", result.fact)
         assertEquals(63, result.length)

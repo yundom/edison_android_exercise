@@ -31,7 +31,7 @@ class NetworkFactRemoteDataSourceTest {
 
     @Test
     fun `Test deserialization of Fact`() = runTest {
-        var result = dataSource.getFact()
+        val result = dataSource.getFact()
 
         assertNotNull(result.fact)
         assertNotNull(result.length)

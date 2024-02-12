@@ -1,8 +1,8 @@
 package jp.speakbuddy.edisonandroidexercise.domain.repository
 
-import jp.speakbuddy.edisonandroidexercise.domain.model.FactEntry
+import jp.speakbuddy.edisonandroidexercise.domain.model.Fact
 import kotlinx.coroutines.flow.Flow
 
 interface FactRepository {
-    fun getFact(): Flow<FactEntry>
+    fun getFact(): Flow<Fact>
 }

@@ -59,6 +59,7 @@ protobuf {
 }
 
 dependencies {
+    implementation(projects.core.domain)
     implementation(libs.androidx.datastore)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
@@ -69,4 +70,5 @@ dependencies {
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.robolectric)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

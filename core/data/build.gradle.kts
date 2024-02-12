@@ -37,6 +37,7 @@ android {
 dependencies {
     api(projects.core.datastore)
     implementation(projects.core.network)
+    implementation(projects.core.datastore)
     implementation(projects.core.domain)
 
     implementation(libs.androidx.core.ktx)
