@@ -3,7 +3,9 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree.Companion.main
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.android.hilt)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.protobuf)
 }
 
@@ -58,5 +60,13 @@ protobuf {
 
 dependencies {
     implementation(libs.androidx.datastore)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
     api(libs.protobuf.kotlin.lite)
+
+    testImplementation(kotlin("test"))
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.ext.junit)
+    testImplementation(libs.hilt.android.testing)
+    testImplementation(libs.robolectric)
 }
