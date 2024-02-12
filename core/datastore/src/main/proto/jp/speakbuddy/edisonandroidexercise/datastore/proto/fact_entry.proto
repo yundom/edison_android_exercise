@@ -1,0 +1,9 @@
+syntax = "proto3"; // Specifies the syntax version of protobuf
+
+package jp.speakbuddy.edisonandroidexercise.datastore; // Replace with your actual package name
+
+// Defines a message corresponding to the FactEntry data class
+message FactEntry {
+  string fact = 1; // Corresponds to the 'fact' property in the data class
+  int32 length = 2; // Corresponds to the 'length' property in the data class
+}

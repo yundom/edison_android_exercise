@@ -1,12 +1,14 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree.Companion.main
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.protobuf)
 }
 
 android {
-    namespace = "jp.speakbuddy.edisonandroidexercise.data"
+    namespace = "jp.speakbuddy.edisonandroidexercise.datastore"
     compileSdk = 34
 
     defaultConfig {
@@ -32,20 +34,29 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    sourceSets {
+        getByName("main") {
+            java.srcDir("generated/source/proto/debug/java")
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                register("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
 
 dependencies {
-    api(projects.core.datastore)
-    implementation(projects.core.network)
-    implementation(projects.core.domain)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-
-    testImplementation(libs.junit)
-
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.espresso.core)
+    implementation(libs.androidx.datastore)
+    api(libs.protobuf.kotlin.lite)
 }
