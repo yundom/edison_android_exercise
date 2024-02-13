@@ -22,7 +22,6 @@ import org.robolectric.annotation.Config
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 @HiltAndroidTest
 @UninstallModules(NetworkModule::class)
