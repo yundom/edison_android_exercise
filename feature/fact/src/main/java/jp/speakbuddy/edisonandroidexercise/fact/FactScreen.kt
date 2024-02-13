@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -78,7 +79,7 @@ fun FactDetail(
     multipleCats: Boolean = false,
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.testTag(FactScreenTestTags.SUCCESS_STATE),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(
             space = 16.dp,
@@ -92,21 +93,32 @@ fun FactDetail(
 
         if (multipleCats) {
             Text(
+                modifier = Modifier.testTag(FactScreenTestTags.MULTIPLE_CATS),
                 text = stringResource(id = R.string.cats),
                 style = MaterialTheme.typography.titleMedium
             )
         }
 
         Text(
+            modifier = Modifier.testTag(FactScreenTestTags.CONTENT),
             text = fact,
             style = MaterialTheme.typography.bodyLarge
         )
 
         Text(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .testTag(FactScreenTestTags.CONTENT_LENGTH)
+                .fillMaxWidth(),
             textAlign = TextAlign.End,
             text = stringResource(id = R.string.length, length),
             style = MaterialTheme.typography.titleMedium
         )
     }
+}
+
+object FactScreenTestTags {
+    const val SUCCESS_STATE = "fact_screen_success_state"
+    const val MULTIPLE_CATS = "fact_screen_multiple_cats"
+    const val CONTENT = "fact_screen_content"
+    const val CONTENT_LENGTH = "fact_screen_content_length"
 }
