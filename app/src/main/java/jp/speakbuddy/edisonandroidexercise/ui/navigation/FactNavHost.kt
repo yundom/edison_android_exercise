@@ -7,9 +7,9 @@ import jp.speakbuddy.edisonandroidexercise.fact.navigation.FACT_ROUTE
 import jp.speakbuddy.edisonandroidexercise.fact.navigation.factScreen
 
 @Composable
-fun FactNavHost() {
+fun FactNavHost(onRouteChange: (String) -> Unit = {}) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = FACT_ROUTE) {
-        factScreen()
+        factScreen(onRouteChange)
     }
 }
