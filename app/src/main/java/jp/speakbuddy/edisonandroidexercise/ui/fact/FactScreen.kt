@@ -4,25 +4,23 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import jp.speakbuddy.edisonandroidexercise.ui.theme.EdisonAndroidExerciseTheme
+import jp.speakbuddy.edisonandroidexercise.domain.model.FactWithCats
+import jp.speakbuddy.edisonandroidexercise.ui.common.UiState
 
 @Composable
 fun FactScreen(
-    viewModel: FactViewModel
+    uiState: UiState<FactWithCats>,
+    onClick: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -35,24 +33,63 @@ fun FactScreen(
             alignment = Alignment.CenterVertically
         )
     ) {
-        var fact by remember { mutableStateOf("") }
+        when (uiState) {
+            UiState.Loading -> {
+                Loading()
+            }
 
-        Text(
-            text = "Fact",
-            style = MaterialTheme.typography.titleLarge
-        )
+            is UiState.Error -> {
+                ErrorDetail(uiState.exception.message ?: "Unknown error")
+            }
 
-        Text(
-            text = fact,
-            style = MaterialTheme.typography.bodyLarge
-        )
-
-        val onClick = {
-            fact = viewModel.updateFact { print("done") }
+            is UiState.Success -> {
+                FactDetail(
+                    fact = uiState.data.fact.fact,
+                    length = uiState.data.fact.length,
+                    multipleCats = uiState.data.manyCats
+                )
+            }
         }
 
         Button(onClick = onClick) {
             Text(text = "Update fact")
         }
     }
+}
+
+@Composable
+fun Loading() {
+    Text(text = "Loading", style = MaterialTheme.typography.titleLarge)
+}
+
+@Composable
+fun ErrorDetail(message: String) {
+    Text(text = message, style = MaterialTheme.typography.titleLarge)
+}
+
+@Composable
+fun FactDetail(fact: String, length: Int, multipleCats: Boolean = false) {
+    Text(
+        text = "Fact",
+        style = MaterialTheme.typography.titleLarge
+    )
+
+    if (multipleCats) {
+        Text(
+            text = "Multiple Cats!!",
+            style = MaterialTheme.typography.titleMedium
+        )
+    }
+
+    Text(
+        text = fact,
+        style = MaterialTheme.typography.bodyLarge
+    )
+
+    Text(
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.End,
+        text = "Length: $length",
+        style = MaterialTheme.typography.titleMedium
+    )
 }
