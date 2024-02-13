@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonandroidexercise.ui
+package jp.speakbuddy.edisonandroidexercise.fact
 
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -6,9 +6,8 @@ import io.mockk.mockk
 import jp.speakbuddy.edisonandroidexercise.domain.GetFactUseCase
 import jp.speakbuddy.edisonandroidexercise.domain.model.Fact
 import jp.speakbuddy.edisonandroidexercise.domain.model.FactWithCats
+import jp.speakbuddy.edisonandroidexercise.fact.common.UiState
 import jp.speakbuddy.edisonandroidexercise.testing.MainDispatcherRule
-import jp.speakbuddy.edisonandroidexercise.ui.common.UiState
-import jp.speakbuddy.edisonandroidexercise.ui.fact.FactViewModel
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

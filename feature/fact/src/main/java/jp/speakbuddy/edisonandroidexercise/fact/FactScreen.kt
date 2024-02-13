@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonandroidexercise.ui.fact
+package jp.speakbuddy.edisonandroidexercise.fact
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import jp.speakbuddy.edisonandroidexercise.domain.model.FactWithCats
-import jp.speakbuddy.edisonandroidexercise.ui.common.UiState
+import jp.speakbuddy.edisonandroidexercise.fact.common.UiState
 
 @Composable
 fun FactScreen(

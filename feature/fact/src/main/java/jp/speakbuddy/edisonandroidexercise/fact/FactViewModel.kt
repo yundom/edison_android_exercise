@@ -1,12 +1,12 @@
-package jp.speakbuddy.edisonandroidexercise.ui.fact
+package jp.speakbuddy.edisonandroidexercise.fact
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.speakbuddy.edisonandroidexercise.domain.GetFactUseCase
 import jp.speakbuddy.edisonandroidexercise.domain.model.FactWithCats
-import jp.speakbuddy.edisonandroidexercise.ui.common.UiState
-import jp.speakbuddy.edisonandroidexercise.ui.common.asUiState
+import jp.speakbuddy.edisonandroidexercise.fact.common.UiState
+import jp.speakbuddy.edisonandroidexercise.fact.common.asUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

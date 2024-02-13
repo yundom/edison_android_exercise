@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonandroidexercise.ui.common
+package jp.speakbuddy.edisonandroidexercise.fact.common
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -11,6 +11,10 @@ sealed class UiState<out T> {
     data class Error(val exception: Throwable) : UiState<Nothing>()
 }
 
-fun <T> Flow<T>.asUiState(): Flow<UiState<T>> = map<T, UiState<T>> { UiState.Success(it) }
+fun <T> Flow<T>.asUiState(): Flow<UiState<T>> = map<T, UiState<T>> {
+    UiState.Success(
+        it
+    )
+}
     .onStart { UiState.Loading }
     .catch { UiState.Error(it) }
