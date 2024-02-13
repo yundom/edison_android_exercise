@@ -35,9 +35,8 @@ android {
 }
 
 dependencies {
-    api(projects.core.datastore)
-    implementation(projects.core.network)
     implementation(projects.core.datastore)
+    implementation(projects.core.network)
     implementation(projects.core.domain)
 
     implementation(libs.androidx.core.ktx)
@@ -46,6 +45,9 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(kotlin("test"))
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)

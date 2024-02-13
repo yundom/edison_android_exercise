@@ -4,7 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import jp.speakbuddy.edisonandroidexercise.data.repository.RemoteFactRepository
+import jp.speakbuddy.edisonandroidexercise.data.repository.OfflineFirstFactRepository
+import jp.speakbuddy.edisonandroidexercise.datastore.FactLocalDataSource
 import jp.speakbuddy.edisonandroidexercise.domain.repository.FactRepository
 import jp.speakbuddy.edisonandroidexercise.network.FactRemoteDataSource
 import javax.inject.Singleton
@@ -17,5 +18,6 @@ object DataModule {
     @Singleton
     fun provideFactRepository(
         remoteDataSource: FactRemoteDataSource,
-    ): FactRepository = RemoteFactRepository(remoteDataSource)
+        localDataSource: FactLocalDataSource,
+    ): FactRepository = OfflineFirstFactRepository(remoteDataSource, localDataSource)
 }
