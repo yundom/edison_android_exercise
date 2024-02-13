@@ -26,7 +26,7 @@ fun FactRoute(
 ) {
     val uiState by viewModel.factUiState.collectAsStateWithLifecycle()
     FactScreen(
-        uiState = uiState,
+        stateProvider = { uiState },
         onClick = { viewModel.fetchFact() }
     )
 }

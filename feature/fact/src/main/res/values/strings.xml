@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="screen_name">Fact Screen</string>
+    <string name="loading">Loading…</string>
+    <string name="title">Fact</string>
+    <string name="cats">Multiple Cats!!</string>
+    <string name="length">Length: %1$s</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="button_update">Update fact</string>
 </resources>

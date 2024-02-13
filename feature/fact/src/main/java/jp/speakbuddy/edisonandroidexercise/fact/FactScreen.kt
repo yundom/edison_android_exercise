@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import jp.speakbuddy.edisonandroidexercise.domain.model.FactWithCats
@@ -19,7 +20,7 @@ import jp.speakbuddy.edisonandroidexercise.fact.common.UiState
 
 @Composable
 fun FactScreen(
-    uiState: UiState<FactWithCats>,
+    stateProvider: () -> UiState<FactWithCats>,
     onClick: () -> Unit = {},
 ) {
     Column(
@@ -33,13 +34,15 @@ fun FactScreen(
             alignment = Alignment.CenterVertically
         )
     ) {
-        when (uiState) {
+        when (val uiState = stateProvider()) {
             UiState.Loading -> {
-                Loading()
+                Loading(stringResource(id = R.string.loading))
             }
 
             is UiState.Error -> {
-                ErrorDetail(uiState.exception.message ?: "Unknown error")
+                ErrorDetail(
+                    uiState.exception.message ?: stringResource(id = R.string.error_unknown)
+                )
             }
 
             is UiState.Success -> {
@@ -52,14 +55,14 @@ fun FactScreen(
         }
 
         Button(onClick = onClick) {
-            Text(text = "Update fact")
+            Text(text = stringResource(id = R.string.button_update))
         }
     }
 }
 
 @Composable
-fun Loading() {
-    Text(text = "Loading", style = MaterialTheme.typography.titleLarge)
+fun Loading(hint: String) {
+    Text(text = hint, style = MaterialTheme.typography.titleLarge)
 }
 
 @Composable
@@ -68,28 +71,42 @@ fun ErrorDetail(message: String) {
 }
 
 @Composable
-fun FactDetail(fact: String, length: Int, multipleCats: Boolean = false) {
-    Text(
-        text = "Fact",
-        style = MaterialTheme.typography.titleLarge
-    )
-
-    if (multipleCats) {
+fun FactDetail(
+    modifier: Modifier = Modifier,
+    fact: String,
+    length: Int,
+    multipleCats: Boolean = false,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(
+            space = 16.dp,
+            alignment = Alignment.CenterVertically
+        )
+    ) {
         Text(
-            text = "Multiple Cats!!",
+            text = stringResource(id = R.string.title),
+            style = MaterialTheme.typography.titleLarge
+        )
+
+        if (multipleCats) {
+            Text(
+                text = stringResource(id = R.string.cats),
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+
+        Text(
+            text = fact,
+            style = MaterialTheme.typography.bodyLarge
+        )
+
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.End,
+            text = stringResource(id = R.string.length, length),
             style = MaterialTheme.typography.titleMedium
         )
     }
-
-    Text(
-        text = fact,
-        style = MaterialTheme.typography.bodyLarge
-    )
-
-    Text(
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.End,
-        text = "Length: $length",
-        style = MaterialTheme.typography.titleMedium
-    )
 }
